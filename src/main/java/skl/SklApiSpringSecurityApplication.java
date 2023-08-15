@@ -1,8 +1,12 @@
-package com;
+package skl;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
+/**
+ * main du squelette d'API Spring security
+ * ne doit normalement pas être utilisé puisque vous êtes censés inclure
+ * le code du squelette dans votre propre projet. 
+ */
 @SpringBootApplication
 public class SklApiSpringSecurityApplication {
 
