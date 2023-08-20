@@ -3,6 +3,9 @@
  */
 package skl.com.dao;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.springframework.security.core.GrantedAuthority;
 
 import jakarta.persistence.Column;
@@ -26,7 +29,7 @@ public class Role implements GrantedAuthority {
 	private int id = 0;
 	@Column(nullable = false,unique = true)
 	private String label = "ANON";
-	
+		
 	@Override
 	public String getAuthority() {
 		if (!this.label.startsWith(AUTHORITY_PREFIX)) {
