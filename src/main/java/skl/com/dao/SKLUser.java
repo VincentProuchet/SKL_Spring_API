@@ -25,12 +25,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * Entity which represents a Collaborator implement UserDetails from
- * SpringSecurity project Document the differentiation between different types
- * of user is made by the list of Roles who are also used by spring security for
- * userAccess
- *
- * @author Joseph
+ * entité utilisateur de  base pour le SKL
+ * Vous êtes censés l'étendre pour vos entités utilisateur
+ * 
+ * le strict necessaire est déjà implémenté
+ * il vous suffit de broder
+ * 
+ * @author Vincent
  */
 @Entity(name = "API_User")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -68,7 +69,7 @@ public class SKLUser implements UserDetails {
 	 * date de creation du mot de passe courant
 	 */
 	@Column(name = "password_creation", nullable = false)
-	private LocalDateTime passwordCreationv = null;
+	private LocalDateTime passwordCreation = null;
 	/**
 	 * date de creation du compte
 	 */

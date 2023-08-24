@@ -20,37 +20,33 @@ public enum API_statuses {
 	/**
 	 * l'API a trouvé tous les élèments necessaires à son fonctionnement 
 	 */
-	instaled(1,"instaled")
+	ready
 	/**
-	 * le compte Owner initial n'a pas été validé
+	 * le compte Owner en attente de validationinitial n'a pas été validé
 	 */
-	,ownerNotValidated(0,"")
+	,ownerValidationPending
 	/**
 	 * Auncun compte Owner n'a été crée dans la base de donnée
 	 */
-	,ownerNotCreated(0,"")
+	,ownerNotCreated
 	/**
 	 * Aucun compte owner n'a été trouvé dans la base de données
 	 * status transitoire qui méneras à l'enregistrement du status 
 	 * OwnerNotCreated
 	 */
-	,ownerNotFound(0,"")
+	,ownerNotFound
 	/**
 	 * aucun role n'a été trouvé dans la base de donnée
 	 * statut transitoire
 	 * le système créeras les Roles de base
 	 */
-	,rolesNotSets(0,"")
+	,baseRolesNotSets
 	/**
 	 * le statut de l'api n'a pas été trouvé dans la base de donnée
 	 * l'API n'est très certainement pas installée
 	 */
-	,noAPIStatus(0,"")
-	;
+	,noAPIStatus
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
-	private int id;
-	@Column
-	private String label;
+	
+	
 }
