@@ -5,8 +5,12 @@ package skl.com.constant;
 
 /**
  *  constantes des roles
+ *  ce n'est pas une énumération
+ *  c'est un déclaration des texte
+ *  le but étant de ne pas ne pas avoir de chaine de caractére 
+ *  qui traine dans le code
  */
-public abstract class SKLRoles {
+public abstract class SKLRoleConst {
 	/**
 	 * Préfix des rôles
 	 * son existance n'est pas un caprice de ma part
@@ -21,7 +25,7 @@ public abstract class SKLRoles {
 	/**
 	 * role de base de toutes entités utilisateur
 	 */
-	public static final String ANON =SKLRoles.PREFIX +"ANON";
+	public static final String ANON =SKLRoleConst.PREFIX +"ANON";
 	
 	/** 
 	 * Propriètaire de l'API
@@ -29,11 +33,11 @@ public abstract class SKLRoles {
 	 * Ils posséde le pouvoir de promouvoir/démettre les comptes admin
 	 * c'est le seul type de compte pouvant promouvoir un compte au rang owner
 	 */
-	public static final String OWNER =SKLRoles.PREFIX + "OWNER";
+	public static final String OWNER =SKLRoleConst.PREFIX + "OWNER";
 	/** Administrateur de l'API */
-	public static final String ADMIN =SKLRoles.PREFIX +"ADMINISTRATOR";
+	public static final String ADMIN =SKLRoleConst.PREFIX +"ADMINISTRATOR";
 	
 	/** utilisateur identifié de l'API */
-	public static final String USER =SKLRoles.PREFIX +"USER";	
+	public static final String USER =SKLRoleConst.PREFIX +"USER";	
 	
 }
