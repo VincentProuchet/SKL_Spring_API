@@ -17,9 +17,10 @@ permettant de ne pas recoder tout le temps la même chose et donc de gagner du t
 
 ## Et si on veux participer
 
-Rien de dplus facile
+Rien de plus facile
 vous faite un fork ( vous pouver faire autant de fork que vous le souhaitez )
 vous codez, vous faites des pull request.
-Soyez le plus explicite et concis possible dans le message du commit, merci par avance.
-Gardez à l'esprit que ce template est censé fournit une base générale.
-Elle n'as pas besoin d'être exhaustive.
+Soyez le plus explicite et concis possible dans vos messages de commit.
+Merci par avance.
+Gardez à l'esprit que ce template ne fait que fournir une base générale.
+Il n'as pas vocation d'être exhaustive.
