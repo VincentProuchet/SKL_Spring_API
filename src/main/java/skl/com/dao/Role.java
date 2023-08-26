@@ -13,12 +13,20 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import skl.com.constant.SKLRoleConst;
 
 /**
- * 
+ * @author VincentProuchet
  */
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Role implements GrantedAuthority {
 	/** serialVersionUID */
 	private static final long serialVersionUID = -6560270968885240743L;

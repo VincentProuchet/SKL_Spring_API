@@ -10,6 +10,8 @@
  * car elle permet de modifier l'implémentation 
  * sans avoir à controler que le reste du code peux utiliser le service.
  * et en plus l'interface est utilisée pour l'autowiring des services
- * dans les controleurs et les @beans de configuration 
+ * dans les controleurs et les @beans de configuration
+ * 
+ *  @author VincentProuchet
  */
 package skl.com.services;

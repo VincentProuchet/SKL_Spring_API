@@ -5,5 +5,6 @@
  * en utilisant les définition données 
  * ils servent UNIQUEMENT
  * aux echanges directs avec la persistance 
+ * @author VincentProuchet
  */
 package skl.com.repository;

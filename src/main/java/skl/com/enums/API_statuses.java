@@ -12,6 +12,7 @@ import lombok.Setter;
 /**
  * Les status possibles de L'api
  * certains seront stockées dans la base de données
+ * @author VincentProuchet
  */
 @Entity
 @Getter

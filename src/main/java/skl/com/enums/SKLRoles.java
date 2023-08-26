@@ -19,6 +19,7 @@ import skl.com.constant.SKLRoleConst;
  * 
  * Notez les écart d'identifiant important
  * celà permet l'ajout de roles intermédiaires.
+ * @author VincentProuchet 
  */
 @AllArgsConstructor
 @Getter

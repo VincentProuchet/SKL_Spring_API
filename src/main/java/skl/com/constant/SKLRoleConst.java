@@ -9,6 +9,8 @@ package skl.com.constant;
  *  c'est un déclaration des texte
  *  le but étant de ne pas ne pas avoir de chaine de caractére 
  *  qui traine dans le code
+ *  
+ *   @author VincentProuchet
  */
 public abstract class SKLRoleConst {
 	/**
