@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -31,7 +32,7 @@ import lombok.Setter;
  * le strict necessaire est déjà implémenté
  * il vous suffit de broder
  * 
- * @author Vincent
+ * @author VincentProuchet
  */
 @Entity(name = "API_User")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -99,9 +100,10 @@ public class SKLUser implements UserDetails {
 	private boolean enabled = false;
 
 	/**
-	 * authorities Roles implemente GrantedAuthority
+	 * collection immuable/immutable
+	 * d
 	 */
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@Fetch(FetchMode.JOIN)
 	private Collection<Role> authorities;
 
