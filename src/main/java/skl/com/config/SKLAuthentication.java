@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -26,6 +27,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import skl.com.constant.SKLVars;
 import skl.com.dao.SKLUser;
 import skl.com.dto.SKLUserDTO;
 import skl.com.services.SKLUserService;
@@ -41,19 +43,9 @@ import skl.com.services.SKLUserService;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SKLAuthentication
-		implements AuthenticationProvider
-		, AuthenticationSuccessHandler
-		, AuthenticationFailureHandler
-		,LogoutHandler
-		, LogoutSuccessHandler {
-
-	/** CONTENT_TYPE_JSON */
-	private static final String CONTENT_TYPE_JSON = "application/json";
-	/** CONTENT_TYPE */
-	@SuppressWarnings("unused")
-	private static final String CONTENT_TYPE = "Content-Type";
-	/** CHARACTER_ENCODING */
-	private static final String CHARACTER_ENCODING = "UTF-8";
+		implements AuthenticationManager, AuthenticationProvider
+		, AuthenticationSuccessHandler, AuthenticationFailureHandler
+		, LogoutHandler, LogoutSuccessHandler {
 
 	/** collaboratorService */
 	@Autowired
@@ -108,8 +100,8 @@ public class SKLAuthentication
 	@Override
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException exception) throws IOException, ServletException {
-		response.setContentType(CONTENT_TYPE_JSON);
-		response.setCharacterEncoding(CHARACTER_ENCODING);
+		response.setContentType(SKLVars.CONTENT_TYPE_JSON);
+		response.setCharacterEncoding(SKLVars.CHARACTER_ENCODING);
 		response.setStatus(401);
 	}
 
@@ -121,8 +113,8 @@ public class SKLAuthentication
 			Authentication authentication) throws IOException, ServletException {
 		String outprint = "";
 		// we have to set respons parameters
-		response.setContentType(CONTENT_TYPE_JSON);
-		response.setCharacterEncoding(CHARACTER_ENCODING);
+		response.setContentType(SKLVars.CONTENT_TYPE_JSON);
+		response.setCharacterEncoding(SKLVars.CHARACTER_ENCODING);
 		try {
 			// we get connected user an make a Data transfert Object of it
 			SKLUserDTO collab = new SKLUserDTO(userSrv.getConnectedUser());

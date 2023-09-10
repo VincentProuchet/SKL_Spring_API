@@ -30,6 +30,8 @@ public abstract class SKLRoutes {
 	public static final String ACCOUNT = "account";
 	
 	public static final String RESET = "reset";
+	
+	public static final String LOBBY = "";
 }
 
 

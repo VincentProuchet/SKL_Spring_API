@@ -9,7 +9,7 @@ package skl.com.constant;
  *
  */
 public abstract class SKLVars {
-
+	
 	/** Durée de vie des tokens */
 	public final static int TOKEN_LIFE = 36000; // ici 10H
 	/** SHEDULED_INTERVAL intervel pour les tache planifiées */
@@ -23,16 +23,17 @@ public abstract class SKLVars {
 	public final static String LOGINPAGE = "/login.html";
 	/** MAX_AUTHORIZED_SESSION */
 	public final static int MAX_AUTHORIZED_SESSION = 1;
-	/**
-	 * temps minimal autorisé lorsque une mission utilise des transport de type
-	 * aérien
-	 *
-	 */
-	public final static int MIN_DAYS_BEFORE_FLIGHT_TRANSPORT = 7;
 	/** FRONT_END_URL utilisé pour les réglage de CORS */
 	public final static String FRONT_END_URL = "http://localhost:4200";
 	/** BACK_END_URL utilisé pour les réglage de CORS */
 	public final static String BACK_END_URL = "http://localhost:8080";
+	
+	/** CONTENT_TYPE_JSON */
+	public final static String CONTENT_TYPE_JSON = "application/json";
+	/** CONTENT_TYPE */
+	public final static String CONTENT_TYPE = "Content-Type";
+	/** CHARACTER_ENCODING */
+	public final static String CHARACTER_ENCODING = "UTF-8";
 
 	/**
 	 * REGEX
@@ -74,15 +75,19 @@ public abstract class SKLVars {
 	 */
 	public final static String REGEX_USERNAMES = "^([\\p{L}\\d]{1,1}[_\\-]{0,1}[\\p{L}\\d]{1,2}){1,16}$";
 	/**
-	 * REGEX for humans last names
-	 *
-	 * Note that we accept digit for testing purpose
-
-	 * mathes will say yes if string contains nothing but letters,numbers,- or --  but
-	 * the name can be lastname | last-name | last--name
-	 *
+	 * REGEX
+	 *verification des nom de famille 
+	 *accepte les noms composé : 
+	 * dupond robert 
+	 * dupond-robert
+	 * dupond--robert
+	 * dupont-robert patrick
+	 * dupont--robert patrick
+	 * @TODO modifier car accepte aussi dupond  robert
+	 * mais rejete 
+	 * 	dupond   robert
 	 */
-	public final static String REGEX_HUMANS_LAST_NAMES =  "^[\\p{L}\\d]{1,32}\\-{0,2}[\\p{L}\\d]{1,32}$";
+	public final static String REGEX_HUMANS_LAST_NAMES =  "^([\\p{L}]{2,30}(\\-{1,2}| {1})|(?:de (la )?){1})?[\\p{L}]{0,30}(?: \\p{L}{0,30})?$";
 	/**
 	 * REGEX for humans first names
 	 *
