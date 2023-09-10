@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,8 +18,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.MappedSuperclass;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -36,10 +35,15 @@ import lombok.Setter;
  */
 @Entity(name = "API_User")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+/* 
+ * une stratégy d'une table par classe dégrade les performance
+ * mais permet une meilleure modularitée
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
+@EqualsAndHashCode
 public class SKLUser implements UserDetails {
 
 	/** serialVersionUID */
@@ -47,7 +51,7 @@ public class SKLUser implements UserDetails {
 	/** id */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id ;
+	private int id = 0;
 	/** nom */
 	@Column(name = "last_name")
 	private String lastName ;
@@ -156,31 +160,4 @@ public class SKLUser implements UserDetails {
 	public boolean isEnabled() {
 		return this.enabled;
 	}
-
-	
-	/**
-	 * SETTER
-	 * @param name
-	 */
-	public void setFirstName(String name) {
-		name =name.strip();
-		this.firstName = name;
-	}
-	/**
-	 * SETTER
-	 * @param name
-	 */
-	public void setLastName(String name) {
-		name =name.strip();
-		this.lastName = name;
-	}
-	/**
-	 * SETTER
-	 * @param name
-	 */
-	public void setUsername(String name) {
-		name =name.strip();
-		this.username = name;
-	}
-
 }

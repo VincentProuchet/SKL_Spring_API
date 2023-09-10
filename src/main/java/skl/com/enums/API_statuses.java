@@ -1,20 +1,14 @@
 package skl.com.enums;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
-
 /**
  * Les status possibles de L'api
  * certains seront stockées dans la base de données
  * @author VincentProuchet
  */
-@Entity
+
 @Getter
 @AllArgsConstructor
 public enum API_statuses {
