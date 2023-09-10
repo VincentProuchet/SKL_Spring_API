@@ -74,5 +74,12 @@ public interface SKLUserService extends UserDetailsService {
 	 * @throws Exception
 	 */
 	public SKLUser delete(SKLUser user) throws Exception;
+	/**
+	 * retourne l'instance de persistance 
+	 * de l'utilisateur connecté
+	 * et présent dans le contexte de securité
+	 *
+	 */
+	public SKLUser getConnectedUser() throws Exception;
 	
 }

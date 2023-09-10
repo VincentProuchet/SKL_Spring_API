@@ -3,21 +3,18 @@
  */
 package skl.com.dao;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.springframework.security.core.GrantedAuthority;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import skl.com.constant.SKLRoleConst;
+import skl.com.enums.SKLRoles;
 
 /**
  * @author VincentProuchet
@@ -27,6 +24,7 @@ import skl.com.constant.SKLRoleConst;
 @NoArgsConstructor
 @Getter
 @Setter
+@EqualsAndHashCode
 public class Role implements GrantedAuthority {
 	/** serialVersionUID */
 	private static final long serialVersionUID = -6560270968885240743L;
@@ -54,5 +52,14 @@ public class Role implements GrantedAuthority {
 		}
 		return this.label;
 	}
-
+	/**
+	 * Constructeur
+	 * de conversion SKLRole --> Role
+	 * @param role
+	 */
+	public Role(SKLRoles role) {
+		this.id = role.getId();
+		this.label = role.getRole();
+	}
+	
 }
