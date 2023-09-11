@@ -15,7 +15,7 @@ import lombok.Setter;
  *  Supper classe des classes de token
  *  les classes dérivée ayant la mêmle structure autant n'avoir
  *  à faire qu'une seule fois l'implémentation
- *  
+ *
  */
 @MappedSuperclass
 @AllArgsConstructor
@@ -24,7 +24,7 @@ import lombok.Setter;
 public class SKL_SuperClass_TokenBase {
 	/**
 	 * token généré pour l'utilisateur
-	 * comme ils sont censés être uniques 
+	 * comme ils sont censés être uniques
 	 * ben ce seront les clés primaires
 	 */
 	@Id
@@ -35,7 +35,7 @@ public class SKL_SuperClass_TokenBase {
 	 * la relation one to one se charge de cette contrainte
 	 */
 	@OneToOne(targetEntity = SKLUser.class)
-	private SKLUser user;	
+	private SKLUser user;
 	/**
 	 * date de création du token
 	 * non on ne stocke pas la date de pérenmption (non statique )
@@ -52,5 +52,5 @@ public class SKL_SuperClass_TokenBase {
 		this.creation = LocalDateTime.now();
 		this.token = UUID.randomUUID().toString();
 	}
-	
+
 }

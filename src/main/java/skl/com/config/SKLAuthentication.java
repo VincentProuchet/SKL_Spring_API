@@ -166,7 +166,7 @@ public class SKLAuthentication
 	@Override
 	public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
 			throws IOException, ServletException {
-		
+
 		UserDetails user = new SKLUser();
 		String principal = "";
 

@@ -2,11 +2,24 @@
 
 Un squelete d'API Spring intégrant spring sécurity
 
+---
+__important__ <br>
+je participe au Hackathon pôle-emploi 2023<br>
+nos groupes étant formé<br>
+il s'avére que les technos prédominante des groupes sont:
+- node.js pour le back-end
+- react.js pour le front-end
+
+ce projet sera donc mis en pause jusqu'à la  __fin__  du hackathon le :<br>
+__13 octobre 2023__ <br>
+parce qu'il me faut apprendre node.js et react.js
+---
+
 ## Comment l'utiliser
 
 - commencez par cliquer sur le button "use this template"
   voir dans *[le manuel des template de github](https://docs.github.com/fr/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)*
-- __MODIFIEZ__ le code pour convenir à vos besoin
+- __MODIFIEZ__  le code pour convenir à vos besoin
 
 
 ## Vous avez bien lu

@@ -5,27 +5,27 @@ import lombok.Getter;
 import skl.com.constant.SKLRoleConst;
 
 /**
- * c'est l'exemple type de ce que vous 
+ * c'est l'exemple type de ce que vous
  * devriez adapter à vos besoins
- * 
+ *
  * enumére les Roles pour que votre API
  * puisse en controler l'existence dans la Base de données
- * 
- * si l'un des élèments énuméré ici n'existe pas en base de données 
+ *
+ * si l'un des élèments énuméré ici n'existe pas en base de données
  * votre API est censé :
- * 
+ *
  * - soit l'ajouter
  * - soit écrire dans le log avant d'arrêter l'execution
- * 
+ *
  * Notez les écart d'identifiant important
  * celà permet l'ajout de roles intermédiaires.
- * @author VincentProuchet 
+ * @author VincentProuchet
  */
 @AllArgsConstructor
 @Getter
 public enum SKLRoles {
 	/**
-	 * le role propriètaire 
+	 * le role propriètaire
 	 * role ayant tous les pouvoirs
 	 * critique pour l'administration fonctionnement de l'api
 	 */
