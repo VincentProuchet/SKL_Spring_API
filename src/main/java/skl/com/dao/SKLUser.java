@@ -27,15 +27,15 @@ import lombok.Setter;
 /**
  * entité utilisateur de  base pour le SKL
  * Vous êtes censés l'étendre pour vos entités utilisateur
- * 
+ *
  * le strict necessaire est déjà implémenté
  * il vous suffit de broder
- * 
+ *
  * @author VincentProuchet
  */
 @Entity(name = "API_User")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-/* 
+/*
  * une stratégy d'une table par classe dégrade les performance
  * mais permet une meilleure modularitée
  */
@@ -97,7 +97,7 @@ public class SKLUser implements UserDetails {
 	private boolean credentialExpired = false;
 	/**
 	 *   si le compte est activé
-	 *   souvent par le clic de utilisateur 
+	 *   souvent par le clic de utilisateur
 	 *   sur un lien qui lui est envoyé par email
 	 */
 	@Column
@@ -123,7 +123,7 @@ public class SKLUser implements UserDetails {
 	 */
 	public void setRoles(Role... authority) {
 		Set<Role> construct = new HashSet<>();
-		
+
 		for (Role role : authority) {
 
 			construct.add(role);

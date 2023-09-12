@@ -23,7 +23,7 @@ import skl.com.dao.id_class.SKL_connect_fail_id;
  * permet de stocker
  *  les echecs de connection
  *  avec une rétention des données des clients
- * 
+ *
  */
 @Entity
 @IdClass(SKL_connect_fail_id.class)
@@ -51,7 +51,7 @@ public class SKL_connection_fail {
 	private LocalDateTime creation;
 	@Column
 	private String ip;
-	
+
 
 	public SKL_connection_fail(HttpServletRequest request) {
 		this.creation = LocalDateTime.now();
@@ -62,7 +62,7 @@ public class SKL_connection_fail {
 	/**
 	 * extrait l'IP du client si cela est possible
 	 * contrôle qu'aucun proxy ne perturbe la récupération de l'adresse
-	 * on ne voudrais pas bloquer un groupe d'utilisateur 
+	 * on ne voudrais pas bloquer un groupe d'utilisateur
 	 * parce que un d'entre eux ne se souvient pas de son mot de passe
 	 * @return
 	 */

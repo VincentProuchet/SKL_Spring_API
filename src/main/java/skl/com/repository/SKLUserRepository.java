@@ -1,9 +1,10 @@
 package skl.com.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import skl.com.dao.SKLUser;
-import java.util.Optional;
 /**
  * @author VincentProuchet
  */

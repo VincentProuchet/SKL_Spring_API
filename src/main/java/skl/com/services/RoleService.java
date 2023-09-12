@@ -1,11 +1,9 @@
 /**
- * 
+ *
  */
 package skl.com.services;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import skl.com.dao.Role;
 import skl.com.enums.SKLRoles;
@@ -14,8 +12,8 @@ import skl.com.enums.SKLRoles;
  * @author VincentProuchet
  */
 public interface RoleService {
-	
-	/** 
+
+	/**
 	 * @return tous les roles trouvés dans la persistance
 	 */
 	public List<Role>list();
@@ -32,7 +30,7 @@ public interface RoleService {
 	 */
 	public Role read(String label)throws Exception;
 	/**
-	 * 
+	 *
 	 * @param role
 	 * @return
 	 * @throws Exception
@@ -45,6 +43,6 @@ public interface RoleService {
 	 * @throws Exception
 	 */
 	public Role create(Role role)throws Exception;
-	
-	
+
+
 }

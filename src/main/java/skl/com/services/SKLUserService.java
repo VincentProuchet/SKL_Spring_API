@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package skl.com.services;
 
@@ -14,9 +14,9 @@ import skl.com.dao.SKLUser;
  * ceci est une couche de liaison
  * toutes les méthodes déclarées ici devront :
  * 		être implémentés dans vos implémentation
- * en échange 
+ * en échange
  * 		elles seront utilisables dans tous le reste de L'API
- * 
+ *
  * @author VincentProuchet
  */
 public interface SKLUserService extends UserDetailsService {
@@ -31,16 +31,16 @@ public interface SKLUserService extends UserDetailsService {
 	 * @return
 	 */
 	public List<SKLUser> listByRole(Role... role);
-	
+
 	/**
-	 * 
+	 *
 	 * @param user
 	 * @return SKLUser instance managed
 	 * @throws Exception
 	 */
 	public SKLUser create(SKLUser user) throws Exception;
 	/**
-	 * 
+	 *
 	 * @param id
 	 * @return SKLUser instance
 	 * @throws Exception
@@ -61,25 +61,25 @@ public interface SKLUserService extends UserDetailsService {
 	 */
 	public SKLUser searchUser(String username) throws Exception;
 	/**
-	 * 
+	 *
 	 * @param user
 	 * @return
 	 * @throws Exception
 	 */
 	public SKLUser update(SKLUser user) throws Exception;
 	/**
-	 * 
+	 *
 	 * @param user
 	 * @return
 	 * @throws Exception
 	 */
 	public SKLUser delete(SKLUser user) throws Exception;
 	/**
-	 * retourne l'instance de persistance 
+	 * retourne l'instance de persistance
 	 * de l'utilisateur connecté
 	 * et présent dans le contexte de securité
 	 *
 	 */
 	public SKLUser getConnectedUser() throws Exception;
-	
+
 }

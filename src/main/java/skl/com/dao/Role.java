@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package skl.com.dao;
 
@@ -32,17 +32,17 @@ public class Role implements GrantedAuthority {
 	/**
 	 * notez qu'ici l'id n'est pas une valeur généré
 	 * vous pouvez le changer
-	 * mais sachez que les ajouts de nouveau rôles en cours d'exploitation 
+	 * mais sachez que les ajouts de nouveau rôles en cours d'exploitation
 	 * de la base de données peuvent poser des problèmes
 	 */
-	@Id	
+	@Id
 	private int id = 0;
 	/**
 	 * nom du role de préférence autodescriptif
 	 */
 	@Column(nullable = false,unique = true)
 	private String label = SKLRoleConst.ANON ;
-		
+
 	@Override
 	public String getAuthority() {
 		// controle de l'existence du préfixe imposé par SPring Sécurity
@@ -61,5 +61,5 @@ public class Role implements GrantedAuthority {
 		this.id = role.getId();
 		this.label = role.getRole();
 	}
-	
+
 }

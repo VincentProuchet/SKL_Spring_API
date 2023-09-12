@@ -9,7 +9,7 @@ package skl.com.constant;
  *
  */
 public abstract class SKLVars {
-	
+
 	/** Durée de vie des tokens */
 	public final static int TOKEN_LIFE = 36000; // ici 10H
 	/** SHEDULED_INTERVAL intervel pour les tache planifiées */
@@ -27,7 +27,7 @@ public abstract class SKLVars {
 	public final static String FRONT_END_URL = "http://localhost:4200";
 	/** BACK_END_URL utilisé pour les réglage de CORS */
 	public final static String BACK_END_URL = "http://localhost:8080";
-	
+
 	/** CONTENT_TYPE_JSON */
 	public final static String CONTENT_TYPE_JSON = "application/json";
 	/** CONTENT_TYPE */
@@ -76,15 +76,15 @@ public abstract class SKLVars {
 	public final static String REGEX_USERNAMES = "^([\\p{L}\\d]{1,1}[_\\-]{0,1}[\\p{L}\\d]{1,2}){1,16}$";
 	/**
 	 * REGEX
-	 *verification des nom de famille 
-	 *accepte les noms composé : 
-	 * dupond robert 
+	 *verification des nom de famille
+	 *accepte les noms composé :
+	 * dupond robert
 	 * dupond-robert
 	 * dupond--robert
 	 * dupont-robert patrick
 	 * dupont--robert patrick
 	 * @TODO modifier car accepte aussi dupond  robert
-	 * mais rejete 
+	 * mais rejete
 	 * 	dupond   robert
 	 */
 	public final static String REGEX_HUMANS_LAST_NAMES =  "^([\\p{L}]{2,30}(\\-{1,2}| {1})|(?:de (la )?){1})?[\\p{L}]{0,30}(?: \\p{L}{0,30})?$";

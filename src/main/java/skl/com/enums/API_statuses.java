@@ -1,19 +1,16 @@
 package skl.com.enums;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+
 /**
  * Les status possibles de L'api
  * certains seront stockées dans la base de données
  * @author VincentProuchet
  */
 
-@Getter
-@AllArgsConstructor
 public enum API_statuses {
 	/**
-	 * l'API a trouvé tous les élèments necessaires à son fonctionnement 
+	 * l'API a trouvé tous les élèments necessaires à son fonctionnement
 	 */
 	ready
 	/**
@@ -26,7 +23,7 @@ public enum API_statuses {
 	,ownerNotCreated
 	/**
 	 * Aucun compte owner n'a été trouvé dans la base de données
-	 * status transitoire qui méneras à l'enregistrement du status 
+	 * status transitoire qui méneras à l'enregistrement du status
 	 * OwnerNotCreated
 	 */
 	,ownerNotFound
@@ -41,7 +38,6 @@ public enum API_statuses {
 	 * l'API n'est très certainement pas installée
 	 */
 	,noAPIStatus
-	
-	
-	
+
+	;
 }

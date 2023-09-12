@@ -6,10 +6,12 @@ import java.util.Collection;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import skl.com.dao.Role;
 import skl.com.dao.SKLUser;
 
+@NoArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -37,7 +39,7 @@ public class SKLUserDTO {
 	/**
 	 * Constructeur
 	 * conversion d'un SKLUser => SKLUserDTO
-	 * 
+	 *
 	 * @param user
 	 */
 	public SKLUserDTO(SKLUser user) {

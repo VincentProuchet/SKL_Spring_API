@@ -7,7 +7,7 @@ public class UserNotFoundException extends SKL_Exception {
 
 	public UserNotFoundException(String code, String message) {
 		super(code, message);
-		
+
 	}
 
 }

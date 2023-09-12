@@ -1,6 +1,5 @@
 package skl.com.exception;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 

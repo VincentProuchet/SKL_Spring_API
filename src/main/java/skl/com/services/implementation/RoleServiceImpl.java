@@ -1,8 +1,6 @@
 package skl.com.services.implementation;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,13 +12,13 @@ import skl.com.enums.SKLRoles;
 import skl.com.repository.SKLRoleRepository;
 import skl.com.services.RoleService;
 /**
- * 
+ *
  */
 @Service
 @AllArgsConstructor
 @NoArgsConstructor
 public class RoleServiceImpl implements RoleService {
-	
+
 	@Autowired
 	SKLRoleRepository repo;
 
@@ -42,23 +40,18 @@ public class RoleServiceImpl implements RoleService {
 	@Override
 	public Role create(Role role)throws Exception {
 		// si l'id est null
-		if(role.getId()==0) {
-			throw new Exception();
-		}
-		// si le role id existe déjà
-		if (repo.existsById(role.getId())) {
-			throw new Exception();
-		}
-		// si le label existe déjà
-		if (repo.findByLabel(role.getLabel()) == null) {
-			throw new Exception();
-		}
-		return repo.save(role); 
 		
+		// si le role id existe déjà
+		// si le label existe déjà
+		if ((role.getId()==0) || repo.existsById(role.getId()) || (repo.findByLabel(role.getLabel()) == null)) {
+			throw new Exception();
+		}
+		return repo.save(role);
+
 	}
 
 	@Override
-	public Role read(SKLRoles role) throws Exception {		
+	public Role read(SKLRoles role) throws Exception {
 		return repo.findById(role.getId()).orElseThrow(() -> new Exception());
 	}
 }
