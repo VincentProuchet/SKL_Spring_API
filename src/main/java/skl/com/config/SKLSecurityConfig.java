@@ -43,41 +43,40 @@ public class SKLSecurityConfig {
     @Bean
     SecurityFilterChain springSecurityfilterChain(HttpSecurity http) throws Exception {
 
-		http.csrf((c) -> {
+		http.csrf((csrf) -> {
 			/** @TODO à changer pour une API déployée */
-			c.disable();
+			csrf.disable();
 		});
 		// login
 		http.authenticationManager(authProvider);
 		http.authenticationProvider(authProvider);
-		http.formLogin((flc) -> {
-			flc.loginProcessingUrl(SKLRoutes.LOGIN);
-			flc.failureHandler(authProvider);
-			flc.successHandler(authProvider);
+		http.formLogin((formLogin) -> {
+			formLogin.loginProcessingUrl(SKLRoutes.LOGIN);
+			formLogin.failureHandler(authProvider);
+			formLogin.successHandler(authProvider);
 		});
-		http.logout((lout) -> {
-			lout.logoutUrl(SKLRoutes.LOGOUT);
-			lout.addLogoutHandler(authProvider);
-			lout.logoutSuccessHandler(authProvider);
-			lout.logoutSuccessUrl(SKLRoutes.LOBBY);
-			lout.clearAuthentication(true);
-			lout.invalidateHttpSession(true);
-			lout.deleteCookies(SKLVars.SESSION_SESSION_COOKIE_NAME);
-			lout.permitAll();
+		http.logout((logout) -> {
+			logout.logoutUrl(SKLRoutes.LOGOUT);
+			logout.addLogoutHandler(authProvider);
+			logout.logoutSuccessHandler(authProvider);
+			logout.logoutSuccessUrl(SKLRoutes.LOBBY);
+			logout.clearAuthentication(true);
+			logout.invalidateHttpSession(true);
+			logout.deleteCookies(SKLVars.SESSION_SESSION_COOKIE_NAME);
 		});
 		// sesion
-		http.sessionManagement((s) -> {
-			s.maximumSessions(1);
-			s.sessionAuthenticationFailureHandler(authProvider);
+		http.sessionManagement((sessionManagement) -> {
+			sessionManagement.maximumSessions(1);
+			sessionManagement.sessionAuthenticationFailureHandler(authProvider);
 		});
 		// cookies
-		http.rememberMe(rmc -> {
-			rmc.alwaysRemember(true);
-			rmc.useSecureCookie(true);
-			rmc.authenticationSuccessHandler(authProvider);
-			rmc.rememberMeCookieDomain("SKLDomain");
-			rmc.rememberMeCookieName(SKLVars.SESSION_SESSION_COOKIE_NAME);
-			rmc.tokenValiditySeconds(SKLVars.TOKEN_LIFE);
+		http.rememberMe(rememberMe -> {
+			rememberMe.alwaysRemember(true);
+			rememberMe.useSecureCookie(true);
+			rememberMe.authenticationSuccessHandler(authProvider);
+			rememberMe.rememberMeCookieDomain("SKLDomain");
+			rememberMe.rememberMeCookieName(SKLVars.SESSION_SESSION_COOKIE_NAME);
+			rememberMe.tokenValiditySeconds(SKLVars.TOKEN_LIFE);
 
 		});
 		return http.build();
@@ -91,7 +90,6 @@ public class SKLSecurityConfig {
 	 */
 	@Bean
 	WebSecurityCustomizer webSecurityCustomizer() {
-		System.err.println("webignoring");
 		return (web) -> web.ignoring();
 	}
 }
