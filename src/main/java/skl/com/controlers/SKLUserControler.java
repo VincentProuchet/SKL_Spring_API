@@ -1,5 +1,6 @@
 package skl.com.controlers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.annotation.Secured;
@@ -17,6 +18,7 @@ import skl.com.constant.SKLRoleConst;
 import skl.com.constant.SKLRoutes;
 import skl.com.dao.SKLUser;
 import skl.com.dto.SKLUserDTO;
+import skl.com.mapper.SklUserMapper;
 import skl.com.services.SKLUserService;
 
 @Controller
@@ -24,17 +26,20 @@ import skl.com.services.SKLUserService;
 @RequestMapping(value = "/" + SKLRoutes.ACCOUNT, produces = MediaType.APPLICATION_JSON_VALUE)
 public class SKLUserControler {
 
+	@Autowired
 	private SKLUserService userSrv;
+	@Autowired
+	private SklUserMapper userMapper;
 
 	@PostMapping(path = "/" + SKLRoutes.SIGNUP)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public void create() {
+	public void create(@RequestBody SKLUser user) {
 	}
 
 	@GetMapping(path = "/{id}")
 	@ResponseStatus(value = HttpStatus.ACCEPTED)
 	public SKLUserDTO read(@PathVariable int id) {
-		return new SKLUserDTO();
+		return userMapper.toDto(new SKLUser());
 	}
 
 	@PostMapping()
