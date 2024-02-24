@@ -11,7 +11,7 @@ import lombok.AllArgsConstructor;
 public class PasswordConfig {
 
 	@Bean
-	public BCryptPasswordEncoder bcCryptPasswordEncoder() {
+	BCryptPasswordEncoder bcCryptPasswordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 }

@@ -50,7 +50,6 @@ public class SKL_SuperClass_TokenBase {
 	public SKL_SuperClass_TokenBase(SKLUser user) {
 		this.user = user;
 		this.creation = LocalDateTime.now();
-		this.token = UUID.randomUUID().toString();
 	}
 
 }
