@@ -4,15 +4,9 @@ Un squelete d'API Spring intégrant spring sécurity
 
 ---
 __important__ <br>
-je participe au Hackathon pôle-emploi 2023<br>
-nos groupes étant formé<br>
-il s'avére que les technos prédominante des groupes sont:
-- node.js pour le back-end
-- react.js pour le front-end
-
-ce projet sera donc mis en pause jusqu'à la  __fin__  du hackathon le :<br>
-__13 octobre 2023__ <br>
-parce qu'il me faut apprendre node.js et react.js
+J'ai enfin un emploi <br>
+Ma diosponibilité est donc réduite
+Je suis ouvert à toutes les questions et suggestions
 ---
 
 ## Comment l'utiliser
