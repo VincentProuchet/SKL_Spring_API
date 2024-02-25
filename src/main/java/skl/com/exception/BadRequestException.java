@@ -1,12 +1,13 @@
 package skl.com.exception;
 
-public class BadRequestException extends SKL_Exception {
+import org.springframework.http.HttpStatus;
 
-	/** serialVersionUID */
+public class BadRequestException extends BaseAPIException {
+
 	private static final long serialVersionUID = -2265292283755400298L;
 
-	public BadRequestException(String code, String... message) {
-		super(code, message);
+	public BadRequestException( String... message) {
+		super(HttpStatus.BAD_REQUEST, message);
 	}
 
 }

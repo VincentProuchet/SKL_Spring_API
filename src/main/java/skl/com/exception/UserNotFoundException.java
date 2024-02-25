@@ -1,13 +1,16 @@
 package skl.com.exception;
 
-public class UserNotFoundException extends SKL_Exception {
+import org.springframework.http.HttpStatus;
 
-	/** serialVersionUID */
+import lombok.Getter;
+
+@Getter
+public class UserNotFoundException extends BaseAPIException {
+
 	private static final long serialVersionUID = -3108782900666594405L;
 
-	public UserNotFoundException(String code, String message) {
-		super(code, message);
-
+	public UserNotFoundException(String... message) {
+		super(HttpStatus.NOT_FOUND, message);
 	}
 
 }
