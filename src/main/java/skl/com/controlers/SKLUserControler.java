@@ -45,7 +45,7 @@ public class SKLUserControler {
 		return userMapper.toDto(new SKLUser());
 	}
 
-	@PostMapping()
+	@PostMapping(path = "/"+ SKLRoutes.UPDATE)
 	@ResponseStatus(value = HttpStatus.ACCEPTED)
 	@Secured({ SKLRoleConst.USER })
 	public SKLUserDTO update(@RequestBody SKLUser user) {
