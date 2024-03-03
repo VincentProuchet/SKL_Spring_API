@@ -1,7 +1,6 @@
 package skl.com.dao;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
@@ -21,7 +20,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class SKL_SuperClass_TokenBase {
+public class SKLSuperClassTokenBase {
 	/**
 	 * token généré pour l'utilisateur
 	 * comme ils sont censés être uniques
@@ -47,7 +46,7 @@ public class SKL_SuperClass_TokenBase {
 	 * utilisé lors de la génération du token
 	 * @param user
 	 */
-	public SKL_SuperClass_TokenBase(SKLUser user) {
+	public SKLSuperClassTokenBase(SKLUser user) {
 		this.user = user;
 		this.creation = LocalDateTime.now();
 	}

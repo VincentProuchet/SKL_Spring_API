@@ -1,7 +1,9 @@
 package skl.com.services.implementation;
 
 import java.util.List;
+import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
@@ -15,6 +17,11 @@ import lombok.AllArgsConstructor;
 import skl.com.constant.SKLRoleConst;
 import skl.com.dao.Role;
 import skl.com.dao.SKLUser;
+import skl.com.dto.SKLUserDTO;
+import skl.com.exception.AuthenticationException;
+import skl.com.exception.BaseAPIException;
+import skl.com.exception.UserNotFoundException;
+import skl.com.mapper.SklUserMapper;
 import skl.com.repository.SKLUserRepository;
 import skl.com.services.SKLUserService;
 
@@ -23,81 +30,79 @@ import skl.com.services.SKLUserService;
 @Transactional
 public class SKLUserServiceImpl implements SKLUserService {
 
-	/** repo */
+	@Autowired
 	private SKLUserRepository repo;
 
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
-		return repo.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username + " not found"));
-	}
+	private SklUserMapper userMapper;
 
 	@Override
-	public List<SKLUser> list() {
+	public UserDetails loadUserByUsername(String username)
+			throws UsernameNotFoundException {
 
-		return this.repo.findAll();
-	}
-
-	@Override
-	public List<SKLUser> listByRole(Role... role) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public SKLUser create(SKLUser user) throws Exception {
-		// TODO Auto-generated method stub
-		return repo.save(user);
-	}
-
-	@Override
-	public SKLUser read(int id) throws Exception {
-		// TODO Auto-generated method stub
-		return repo.findById(id).orElseThrow(() -> new Exception());
-	}
-
-	@Override
-	public SKLUser read(String login) throws Exception {
-		// TODO Auto-generated method stub
-		return repo.findByLogin(login).orElseThrow(() -> new Exception());
-	}
-
-	@Override
-	public SKLUser searchUser(String username) throws Exception {
-		// TODO Auto-generated method stub
-		return repo.findByUsername(username).orElseThrow(() -> new Exception());
-	}
-
-	@Override
-	public SKLUser update(SKLUser user) throws Exception {
-		SKLUser dbUser = this.read(user.getId());
-		dbUser.setFirstName(user.getFirstName());
-		dbUser.setLastName(user.getLastName());
-		repo.save(dbUser);
-		return user;
-	}
-
-	@Override
-	public SKLUser delete(SKLUser user) throws Exception {
-		SKLUser dbUser = this.read(user.getId());
-		dbUser.setLocked(true);
-		dbUser.setEnabled(false);
-
-		repo.save(dbUser);
-		// TODO Auto-generated method stub
-		return null;
+		return repo.findByUsername(username).orElseThrow(
+				() -> new UsernameNotFoundException(username + " not found"));
 	}
 
 	@Override
 	@Secured({ SKLRoleConst.USER })
-	public SKLUser getConnectedUser() throws Exception {
-		SecurityContext context = SecurityContextHolder.getContext();// I left if well sequenced on purpose
+	public SKLUser getConnectedUser() throws BaseAPIException {
+		SecurityContext context = SecurityContextHolder.getContext();
+
 		Authentication auth = context.getAuthentication();
 		if (auth == null) {
-			throw new Exception();
+			throw new AuthenticationException(" vous n'êtes pas authentifié ");
 		}
 		String username = (String) auth.getPrincipal();
-		return repo.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Not found"));
+		return repo.findByUsername(username).orElseThrow(
+				() -> new UsernameNotFoundException(" pas d'utilisateur  "));
+	}
+
+	@Override
+	public List<SKLUserDTO> getAll() {
+		return repo.findAll().stream().map(userMapper::toDto).toList();
+	}
+
+	@Override
+	public SKLUserDTO create(SKLUserDTO user) throws BaseAPIException {
+		// TODO Auto-generated method stub
+		return user;
+	}
+
+	@Override
+	public SKLUserDTO findById(int id) throws BaseAPIException {
+		SKLUser user = repo.findById(id)
+				.orElseThrow(() -> new UserNotFoundException(
+						" pas d'utilisateur trouvé avec l'id ",
+						Integer.toString(id)));
+		
+		return userMapper.toDto(user);
+	}
+
+	@Override
+	public SKLUserDTO findByLogin(String login) throws BaseAPIException {
+		SKLUser user = repo.findByLogin(login)
+				.orElseThrow(() -> new UserNotFoundException(
+						" pas d'utilisateur trouvé avec login ",
+						login));		
+		return userMapper.toDto(user);
+	}
+
+	@Override
+	public Set<SKLUserDTO> searchUser(SKLUserDTO user) throws BaseAPIException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public SKLUserDTO update(SKLUserDTO user) throws BaseAPIException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public SKLUserDTO delete(SKLUserDTO user) throws BaseAPIException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

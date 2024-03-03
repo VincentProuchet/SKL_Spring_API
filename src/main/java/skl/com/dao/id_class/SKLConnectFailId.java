@@ -9,20 +9,20 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * définit la clé composé pour les classes de token
+ * clef composé pour les classes de token
  * pour faire simple cela permet d'avoir des clés composées dans les classes
  */
 @AllArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode
-public class SKL_connect_fail_id implements Serializable {
+public class SKLConnectFailId implements Serializable {
 
 
 	/** serialVersionUID */
 	private static final long serialVersionUID = 1318095923294866365L;
 
-	private int client_hash;
+	private int clientHash;
 
 	private LocalDateTime creation;
 

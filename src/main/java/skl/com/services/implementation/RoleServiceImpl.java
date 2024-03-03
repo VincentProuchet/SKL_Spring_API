@@ -11,9 +11,7 @@ import skl.com.dao.Role;
 import skl.com.enums.SKLRoles;
 import skl.com.repository.SKLRoleRepository;
 import skl.com.services.RoleService;
-/**
- *
- */
+
 @Service
 @AllArgsConstructor
 @NoArgsConstructor
@@ -39,11 +37,8 @@ public class RoleServiceImpl implements RoleService {
 
 	@Override
 	public Role create(Role role)throws Exception {
-		// si l'id est null
 		
-		// si le role id existe déjà
-		// si le label existe déjà
-		if ((role.getId()==0) || repo.existsById(role.getId()) || (repo.findByLabel(role.getLabel()) == null)) {
+		if ((role.getId()==0) || repo.existsById(role.getId()) || (repo.findByLabel(role.getLabel()).isPresent())) {
 			throw new Exception();
 		}
 		return repo.save(role);

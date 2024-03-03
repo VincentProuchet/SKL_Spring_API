@@ -16,24 +16,19 @@ import skl.com.dao.SKLUser;
 @Setter
 @EqualsAndHashCode
 public class SKLUserDTO {
-	/** id */
+	
 	private int id = 0;
-	/** nom */
+	
 	private String lastName = "";
-	/** prénom */
+	
 	private String firstName = "";
-	/** email : identification mail address */
+	
 	private String email = "";
-	/** nom d'utilisateur pour l'identification dans d'éventuels forum */
+	
 	private String username = "";
-	/**
-	 * date de creation du compte
-	 */
+	
 	private LocalDateTime accountCreation = null;
-
-	/**
-	 * collection immutable/immutable
-	 */
+	
 	private Collection<Role> authorities = new ArrayList<>();
 
 	/**
