@@ -5,7 +5,7 @@ Un squelete d'API Spring intégrant spring sécurity
 ---
 __important__ <br>
 J'ai enfin un emploi <br>
-Ma diosponibilité est donc réduite
+Ma disponibilité est donc réduite
 Je suis ouvert à toutes les questions et suggestions
 ---
 
