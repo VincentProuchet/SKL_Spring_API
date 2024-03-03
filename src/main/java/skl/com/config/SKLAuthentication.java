@@ -33,11 +33,8 @@ import skl.com.dto.SKLUserDTO;
 import skl.com.services.SKLUserService;
 
 /**
- * a custom authentication provider for injection in GDMSecurity and its
- * filterChain
- *
- * @author Vincent
- *
+ * a custom authentication provider
+ * for filterChain
  */
 @Configuration
 @AllArgsConstructor
@@ -47,10 +44,10 @@ public class SKLAuthentication
 		, AuthenticationSuccessHandler, AuthenticationFailureHandler
 		, LogoutHandler, LogoutSuccessHandler {
 
-	/** collaboratorService */
+
 	@Autowired
 	private SKLUserService userSrv;
-	/** passwordEncoder */
+
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
@@ -94,9 +91,6 @@ public class SKLAuthentication
 		return authentication.equals(UsernamePasswordAuthenticationToken.class);
 	}
 
-	/**
-	 *handler for authentication failure
-	 */
 	@Override
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException exception) throws IOException, ServletException {
@@ -105,9 +99,6 @@ public class SKLAuthentication
 		response.setStatus(401);
 	}
 
-	/**
-	 * handler for authentication success
-	 */
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
@@ -156,13 +147,6 @@ public class SKLAuthentication
 		}
 	}
 
-	/**
-	 * will be called if authentication doesn't throw any error
-	 *
-	 * it form a correct http response
-	 *
-	 *
-	 */
 	@Override
 	public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
 			throws IOException, ServletException {

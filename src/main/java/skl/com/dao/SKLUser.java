@@ -1,6 +1,6 @@
 package skl.com.dao;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -30,8 +30,6 @@ import lombok.Setter;
  *
  * le strict necessaire est déjà implémenté
  * il vous suffit de broder
- *
- * @author VincentProuchet
  */
 @Entity(name = "API_User")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -48,7 +46,6 @@ public class SKLUser implements UserDetails {
 
 	/** serialVersionUID */
 	private static final long serialVersionUID = -2542617641751124157L;
-	/** id */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id = 0;
@@ -58,7 +55,6 @@ public class SKLUser implements UserDetails {
 	/** prénom */
 	@Column(name = "first_name")
 	private String firstName;
-	/** email : identification mail address */
 	@Column(name = "email", nullable = false, unique = true)
 	private String email;
 	/** nom d'utilisateur pour l'identification sur d'éventuels forum */
@@ -67,19 +63,16 @@ public class SKLUser implements UserDetails {
 	/** login utilisé pour la connexion peux être identique a l'email */
 	@Column(nullable = false, unique = true)
 	private String login;
-	/** mot de passe */
 	@Column(name = "password", nullable = false)
 	private String password ;
-	/**
-	 * date de creation du mot de passe courant
-	 */
+
 	@Column(name = "password_creation", nullable = false)
-	private LocalDateTime passwordCreation = null;
+	private ZonedDateTime passwordCreation = null;
 	/**
 	 * date de creation du compte
 	 */
 	@Column(name = "account_creation", nullable = false)
-	private LocalDateTime accountCreation = null;
+	private ZonedDateTime accountCreation = null;
 	/**
 	 * si le compte utilisateur à une validité pérmimée
 	 */
@@ -105,7 +98,6 @@ public class SKLUser implements UserDetails {
 
 	/**
 	 * collection immuable/immutable
-	 * d
 	 */
 	@ManyToMany(fetch = FetchType.EAGER)
 	@Fetch(FetchMode.JOIN)
@@ -122,13 +114,13 @@ public class SKLUser implements UserDetails {
 	 * immutable and we can't bypass that because of the UserDetail implementation
 	 */
 	public void setRoles(Role... authority) {
-		Set<Role> construct = new HashSet<>();
+		Set<Role> updatedRoleSet = new HashSet<>(authorities);
 
 		for (Role role : authority) {
 
-			construct.add(role);
+			updatedRoleSet.add(role);
 		}
-		this.authorities = construct;
+		this.authorities = updatedRoleSet;
 	}
 
 	@Override

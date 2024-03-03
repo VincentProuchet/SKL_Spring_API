@@ -10,7 +10,6 @@ package skl.com.constant;
  *  le but étant de ne pas ne pas avoir de chaine de caractére
  *  qui traine dans le code
  *
- *   @author VincentProuchet
  */
 public abstract class SKLRoleConst {
 	/**
@@ -22,24 +21,14 @@ public abstract class SKLRoleConst {
 	 * 	- le grantedAuthority de l'utilisateur
 	 *  - l'annotation @security du controleur ou méthode
 	*/
-
 	public static final String PREFIX = "ROLE_";
-	/**
-	 * role de base de toutes entités utilisateur
-	 */
-	public static final String ANON =SKLRoleConst.PREFIX +"ANON";
 
-	/**
-	 * Propriètaire de l'API
-	 * c'est le premier type de compte crée lors de l'initialization de l'api
-	 * Ils posséde le pouvoir de promouvoir/démettre les comptes admin
-	 * c'est le seul type de compte pouvant promouvoir un compte au rang owner
-	 */
-	public static final String OWNER =SKLRoleConst.PREFIX + "OWNER";
-	/** Administrateur de l'API */
-	public static final String ADMIN =SKLRoleConst.PREFIX +"ADMINISTRATOR";
+	public static final String ANON ="ANON";
 
-	/** utilisateur identifié de l'API */
-	public static final String USER =SKLRoleConst.PREFIX +"USER";
+	public static final String OWNER ="OWNER";
+
+	public static final String ADMIN ="ADMINISTRATOR";
+
+	public static final String USER ="USER";
 
 }

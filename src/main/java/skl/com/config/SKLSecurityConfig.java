@@ -13,34 +13,20 @@ import skl.com.constant.SKLVars;
 import skl.com.services.SKLUserService;
 
 /**
- * Security Configuration this is where we declare
- *
+ * Security Configuration this is where we declare *
  * @Beans related to security and how the spring security will accept or reject
  *        request
- * @author Vincent
  */
 @Configuration
 @AllArgsConstructor
 public class SKLSecurityConfig {
 
-	/**
-	 * authProvider logoutHandler
-	 */
 	@Autowired
 	private SKLAuthentication authProvider;
-
-	/** userService */
 	@Autowired
 	SKLUserService userService;
 
-    /**
-     * configuration spring security
-     *
-     * @param http
-     * @return
-     * @throws Exception
-     */
-    @Bean
+	@Bean
     SecurityFilterChain springSecurityfilterChain(HttpSecurity http) throws Exception {
 
 		http.csrf((csrf) -> {
@@ -64,7 +50,7 @@ public class SKLSecurityConfig {
 			logout.invalidateHttpSession(true);
 			logout.deleteCookies(SKLVars.SESSION_SESSION_COOKIE_NAME);
 		});
-		// sesion
+		// session
 		http.sessionManagement((sessionManagement) -> {
 			sessionManagement.maximumSessions(1);
 			sessionManagement.sessionAuthenticationFailureHandler(authProvider);
@@ -81,13 +67,7 @@ public class SKLSecurityConfig {
 		});
 		return http.build();
 	}
-
-	/**
-	 * this is where we configure the method and path that can be accessed from
-	 * outside the first commit will open everything its head is Security OpenAll
-	 *
-	 * @return
-	 */
+	
 	@Bean
 	WebSecurityCustomizer webSecurityCustomizer() {
 		return (web) -> web.ignoring();

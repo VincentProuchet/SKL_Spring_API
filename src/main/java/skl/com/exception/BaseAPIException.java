@@ -6,11 +6,11 @@ import org.springframework.web.server.ResponseStatusException;
 import lombok.Getter;
 
 /**
- * Vous devriez n'utiliser que des Exceptions étendant celle-ci - parce que
- * Spring va par défaut les retourner par la reponse http - parce qu'elle vous
- * permet de mettre un status à chaque type sans vous imposer de les chercher à
- * chaque fois - parce qu'elle utilise un stringbuilder, largement plus
- * performant que de la concaténation de String
+ * Vous devriez n'utiliser que des Exceptions étendant celle-ci 
+ * Spring va par défaut les retourner par la reponse http 
+ * elle vous permet de mettre un status à chaque type 
+ * elle utilise un stringbuilder
+ * largement plus performant que de la concaténation de String
  */
 @Getter
 public class BaseAPIException extends ResponseStatusException {

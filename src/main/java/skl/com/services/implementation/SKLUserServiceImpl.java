@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import skl.com.constant.SKLRoleConst;
-import skl.com.dao.Role;
 import skl.com.dao.SKLUser;
 import skl.com.dto.SKLUserDTO;
 import skl.com.exception.AuthenticationException;

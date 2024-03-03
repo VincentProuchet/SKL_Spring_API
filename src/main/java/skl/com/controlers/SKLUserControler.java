@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import lombok.AllArgsConstructor;
 import skl.com.constant.SKLRoleConst;
@@ -21,9 +22,10 @@ import skl.com.dto.SKLUserDTO;
 import skl.com.mapper.SklUserMapper;
 import skl.com.services.SKLUserService;
 
-@Controller
+@RestController
 @AllArgsConstructor
-@RequestMapping(value = "/" + SKLRoutes.ACCOUNT, produces = MediaType.APPLICATION_JSON_VALUE)
+@ResponseStatus(value = HttpStatus.OK)
+@RequestMapping(value = "/" + SKLRoutes.ACCOUNT)
 public class SKLUserControler {
 
 	@Autowired
@@ -34,11 +36,12 @@ public class SKLUserControler {
 	@PostMapping(path = "/" + SKLRoutes.SIGNUP)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public void create(@RequestBody SKLUser user) {
+		//TODO  faire le create
 	}
 
 	@GetMapping(path = "/{id}")
-	@ResponseStatus(value = HttpStatus.ACCEPTED)
 	public SKLUserDTO read(@PathVariable int id) {
+		//TODO seulement codé pour avoir une réponse basique 
 		return userMapper.toDto(new SKLUser());
 	}
 
@@ -46,6 +49,7 @@ public class SKLUserControler {
 	@ResponseStatus(value = HttpStatus.ACCEPTED)
 	@Secured({ SKLRoleConst.USER })
 	public SKLUserDTO update(@RequestBody SKLUser user) {
+		//TODO seulement codé pour avoir une réponse basique
 		return new SKLUserDTO(user);
 	}
 
@@ -53,6 +57,6 @@ public class SKLUserControler {
 	@ResponseStatus(value = HttpStatus.ACCEPTED)
 	@Secured({ SKLRoleConst.USER })
 	public void delete() {
-
+		// TODO faire le delete
 	}
 }

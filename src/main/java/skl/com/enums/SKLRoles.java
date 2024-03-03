@@ -29,17 +29,16 @@ public enum SKLRoles {
 	 * role ayant tous les pouvoirs
 	 * critique pour l'administration fonctionnement de l'api
 	 */
-	OWNER(1,SKLRoleConst.OWNER)
+	OWNER(SKLRoleConst.OWNER)
 	/**
 	 * les admins font ce que les admin doivent
 	 * comme bloquer des comptes utilisateurs
 	 */
-	,ADMIN(10000, SKLRoleConst.ADMIN)
+	,ADMIN(SKLRoleConst.ADMIN)
 	/**
 	 * role de base des utilisateurs connectés
 	 */
-	,USER(20000, SKLRoleConst.USER)
+	,USER(SKLRoleConst.USER)
 	;
-	private Integer id;
 	private String role;
 }

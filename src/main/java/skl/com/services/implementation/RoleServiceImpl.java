@@ -9,6 +9,9 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import skl.com.dao.Role;
 import skl.com.enums.SKLRoles;
+import skl.com.exception.BadRequestException;
+import skl.com.exception.BaseAPIException;
+import skl.com.exception.DataNotFoundException;
 import skl.com.repository.SKLRoleRepository;
 import skl.com.services.RoleService;
 
@@ -25,28 +28,31 @@ public class RoleServiceImpl implements RoleService {
 		return repo.findAll();
 	}
 
+	
 	@Override
-	public Role read(int id) throws Exception {
-		return repo.findById(id).orElseThrow(() -> new Exception());
+	public Role read(String label) throws BaseAPIException {
+		return repo.findByIgnoringCaseRoleName(label).orElseThrow(() -> new DataNotFoundException("Le role n'existe pas"));
 	}
 
 	@Override
-	public Role read(String label) throws Exception {
-		return repo.findByLabel(label).orElseThrow(() -> new Exception());
-	}
-
-	@Override
-	public Role create(Role role)throws Exception {
+	public Role create(Role role)throws BaseAPIException {
 		
-		if ((role.getId()==0) || repo.existsById(role.getId()) || (repo.findByLabel(role.getLabel()).isPresent())) {
-			throw new Exception();
+		if (role == null) {
+			throw new DataNotFoundException(" role ne peux être null ");
 		}
+		if(role.getRoleName() == null) {
+			throw new DataNotFoundException(" role ne peux être null ");
+		}
+		if(repo.findByIgnoringCaseRoleName(role.getRoleName()).isPresent()){
+			throw new BadRequestException(" le role existe déjà ");
+		}
+		
 		return repo.save(role);
 
 	}
 
 	@Override
-	public Role read(SKLRoles role) throws Exception {
-		return repo.findById(role.getId()).orElseThrow(() -> new Exception());
+	public Role read(SKLRoles role) throws BaseAPIException {
+		return repo.findById(role.getRole()).orElseThrow(() ->  new DataNotFoundException("Le role n'existe pas"));
 	}
 }
